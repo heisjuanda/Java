@@ -1,0 +1,120 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package taller1;
+
+
+import javax.swing.JOptionPane;
+
+/**
+ * @author JuanDavidMoreno-202059997
+ * @author JuanCamiloMeneses-202059944
+ */
+public class Taller2 {
+    
+    char matriz[][];
+    char alfabetoMi[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
+                     'ñ','o','p','q','r','s','t','u','v','w','x','y','z',' '};
+    char alfabetoMa[]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N',
+                     'Ñ','O','P','Q','R','S','T','U','V','W','S','Y','Z',' '};
+    int c, f;
+    int resultado;
+    public void menu(){
+        int opc;
+        do {            
+            String ent= JOptionPane.showInputDialog("1. Ingrese una matriz cuyas filas por columnas sea igual a 28\n"
+                    + "2. Mostrar la matriz por pantalla\n"
+                    + "0. Salir");
+            opc=Integer.parseInt(ent);
+            switch(opc){
+                case 1: ingresar(); break;
+                case 2: imprimir(); break;
+                case 0: break;
+                default: JOptionPane.showMessageDialog(null, "Entrada incorrecta");
+            }
+        } while (opc != 0);
+    }
+    
+    public void ingresar(){
+        String ent=JOptionPane.showInputDialog("Introduzca la cantidad de filas:");
+        f=Integer.parseInt(ent);
+        
+        ent=JOptionPane.showInputDialog("Introduzca la cantidad de columnas:");
+        c=Integer.parseInt(ent);
+        matriz=new char[f][c];
+        validar();
+    }
+    
+    public void validar(){
+        if(f*c==28){
+            rellenar();
+        }else{
+            JOptionPane.showMessageDialog(null,"Error: Todas las filas " + f + ", multiplicado por todas las columnas " + c + ", es distinto de 28");
+        }
+    }
+    
+    public void rellenar(){
+        int parada=0;
+        do {            
+            String ent=JOptionPane.showInputDialog("Decida si la matriz se llenara con mayusculas o minusculas:\n"
+            + "1. Mayusculas\n"
+            + "2. Minusculas");
+            resultado=Integer.parseInt(ent);
+            switch(resultado){
+                case 1: mayuscula();parada=0;break;
+                case 2: minuscula();parada=0;break;
+                default: JOptionPane.showMessageDialog(null, "Entrada incorrecta");
+            }
+        } while (parada!=0);
+    }
+    
+    public String mayuscula(){
+        String salida="";
+        for (int i=0 ; i < f; i++) {
+            for (int j = 0; j < c; j++) {
+                matriz[i][j]=alfabetoMa[(int)(Math.random()*28)];
+            }
+        }
+        for (int i = 0; i < f; i++) {
+            for (int j = 0; j < c; j++) {
+                salida+=matriz[i][j] + " ";
+            }System.out.println();
+             salida+="\n";
+        }
+        return salida;
+    }
+    
+    public String minuscula(){
+        String salida="";
+        for (int i=0 ; i < f; i++) {
+            for (int j = 0; j < c; j++) {
+                matriz[i][j]=alfabetoMi[(int)(Math.random()*28)];
+            }
+        }
+        for (int i = 0; i < f; i++) {
+            for (int j = 0; j < c; j++) {
+                salida+=matriz[i][j] + " ";
+            }System.out.println();
+             salida+="\n";
+        }
+        return salida;
+        
+    }
+    
+    public void imprimir(){
+        if (resultado==1) {
+            JOptionPane.showMessageDialog(null, mayuscula());
+        }else{
+            if(resultado==2){
+                JOptionPane.showMessageDialog(null, minuscula());
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        Taller2 obj=new Taller2();
+        obj.menu();
+    }
+}
