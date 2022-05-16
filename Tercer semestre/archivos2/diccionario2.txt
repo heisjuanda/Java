@@ -1,0 +1,3 @@
+celular,phone,celule,cccc
+mesa,table,table,tttt
+silla,chair,chaire,ssss

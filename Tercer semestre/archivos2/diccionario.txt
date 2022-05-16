@@ -1,0 +1,4 @@
+gato,cat,gate,ggggg
+perro,dog,perre,pppp
+casa,house,case,ccccc
+carro,car,ruedas,rrrr
